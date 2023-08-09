@@ -13,7 +13,12 @@ public class Conta {
     }
 
     public void setSaldo(double saldo) {
-        this.saldo = saldo;
+        if ( saldo > 0) {
+            this.saldo = saldo;
+        } else {
+            System.out.println("Favor, digite um valor maior que 0 (zero). Valor de Saldo inválido!");
+        }
+
     }
 
     public int getAgencia() {
@@ -21,7 +26,12 @@ public class Conta {
     }
 
     public void setAgencia(int agencia) {
-        this.agencia = agencia;
+        if ( agencia > 0) {
+            this.agencia = agencia;
+        } else {
+            System.out.println("Favor, digite um valor maior que 0 (zero). Número de Agência inválido!");
+        }
+
     }
 
     public int getNumeroConta() {
@@ -29,7 +39,12 @@ public class Conta {
     }
 
     public void setNumeroConta(int numeroConta) {
-        this.numeroConta = numeroConta;
+        if ( numeroConta > 0) {
+            this.numeroConta = numeroConta;
+        } else {
+            System.out.println("Favor, digite um valor maior que 0 (zero). Numero de conta inválido!");
+        }
+
     }
 
     public String getTitular() {
@@ -42,36 +57,55 @@ public class Conta {
 
     //métodos da Classe - Funções da Conta
     public void depositar(double valor){
-        //this.saldo = saldo + valor;
-        this.saldo += valor;
+        if ( valor > 0) {
+            //this.saldo = saldo + valor;
+            this.saldo += valor;
+        } else {
+            System.out.println("Favor, digite um valor maior que 0 (zero). Depósito NÃO realizado!");
+        }
+
     }
 
     public  boolean sacar(double valor){
-        if (this.saldo >= valor) {
-            this.saldo -= valor;
-            return true;
+        if ( valor > 0) {
+            if (this.saldo >= valor) {
+                this.saldo -= valor;
+                return true;
+            } else {
+                System.out.println("Você NÃO tem dinheiro suficiente para sacar este Valor. Saque Negado.");
+                return false;
+            }
         } else {
-            System.out.println("Você NÃO tem dinheiro suficiente para sacar este Valor. Saque Negado.");
+            System.out.println("Favor, digite um valor maior que 0 (zero). Saque NÃO realizado!");
             return false;
         }
+
     }
 
     public boolean transferir(double valor, Conta destino){
-        if (this.saldo >= valor) {
-            this.saldo -= valor;
-            destino.depositar(valor);
-            return true;
+        if ( valor > 0) {
+            if (this.saldo >= valor) {
+                this.saldo -= valor;
+                destino.depositar(valor);
+                return true;
+            } else {
+                System.out.println("Você NÃO tem dinheiro suficiente para transferir este Valor. Transferência Negada.");
+                return false;
+            }
         } else {
-            System.out.println("Você NÃO tem dinheiro suficiente para transferir este Valor. Transferência Negada.");
+            System.out.println("Favor, digite um valor maior que 0 (zero). Transferência NÃO realizada!");
             return false;
         }
     }
 
     public void mostrarExtrato(){
+        System.out.println("___________________________________");
         System.out.println("JavaBank -> O seu Banco");
+        System.out.println("___________________________________");
         System.out.println("Conta número \t" + this.numeroConta);
         System.out.println("Agência \t\t" + this.agencia);
         System.out.println("Titular \t\t" + this.titular);
         System.out.println("Saldo \t\t\t" + this.saldo);
+        System.out.println("___________________________________");
     }
 }

@@ -42,7 +42,7 @@ public class Conta {
         if ( numeroConta > 0) {
             this.numeroConta = numeroConta;
         } else {
-            System.out.println("Favor, digite um valor maior que 0 (zero). Numero de conta inválido!");
+            System.out.println("Favor, digite um valor maior que 0 (zero). Número de conta inválido!");
         }
 
     }
@@ -53,6 +53,17 @@ public class Conta {
 
     public void setTitular(String titular) {
         this.titular = titular;
+    }
+
+    //Método Construtor
+    public Conta(int numeroConta, int agencia, String titular){
+        if (numeroConta > 0 && agencia > 0) {
+            this.numeroConta = numeroConta;
+            this.agencia = agencia;
+            this.titular = titular;
+        } else {
+            System.out.println("O número da Conta e Agência precisam se positivos. A nova Conta NÃO foi criada.");
+        }
     }
 
     //métodos da Classe - Funções da Conta
@@ -102,10 +113,10 @@ public class Conta {
         System.out.println("___________________________________");
         System.out.println("JavaBank -> O seu Banco");
         System.out.println("___________________________________");
-        System.out.println("Conta número \t" + this.numeroConta);
-        System.out.println("Agência \t\t" + this.agencia);
-        System.out.println("Titular \t\t" + this.titular);
-        System.out.println("Saldo \t\t\t" + this.saldo);
+        System.out.println("Conta número \t" + numeroConta);
+        System.out.println("Agência \t\t" + agencia);
+        System.out.println("Titular \t\t" + titular);
+        System.out.println("Saldo \t\t\t" + saldo);
         System.out.println("___________________________________");
     }
 }

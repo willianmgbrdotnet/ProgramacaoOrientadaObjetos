@@ -67,7 +67,11 @@ public class Conta {
         }
     }
 
-    public double mostrarSaldo(){
-        return this.saldo;
+    public void mostrarExtrato(){
+        System.out.println("JavaBank -> O seu Banco");
+        System.out.println("Conta número \t" + this.numeroConta);
+        System.out.println("Agência \t\t" + this.agencia);
+        System.out.println("Titular \t\t" + this.titular);
+        System.out.println("Saldo \t\t\t" + this.saldo);
     }
 }

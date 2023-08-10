@@ -1,11 +1,13 @@
 package javaBank.contas;
 
+import javaBank.clientes.Cliente;
+
 public class Conta {
     //Esses são dados sensíveis da Classe e que não estarão visíveis para serem acessados fora da Classe.
     private double saldo;
     private int agencia;
     private int numeroConta;
-    private String titular;
+     Cliente titular;
 
     //Os getters e setter permitirão acessar os atributos privados da Classe
     public double getSaldo() {
@@ -47,22 +49,22 @@ public class Conta {
 
     }
 
-    public String getTitular() {
+    public Cliente getTitular() {
         return titular;
     }
 
-    public void setTitular(String titular) {
+    public void setTitular(Cliente titular) {
         this.titular = titular;
     }
 
     //Método Construtor
-    public Conta(int numeroConta, int agencia, String titular){
+    public Conta(int numeroConta, int agencia){
         if (numeroConta > 0 && agencia > 0) {
             this.numeroConta = numeroConta;
             this.agencia = agencia;
-            this.titular = titular;
+
         } else {
-            System.out.println("O número da Conta e Agência precisam se positivos. A nova Conta NÃO foi criada.");
+            System.out.println("O número da Conta e Agência precisam ser positivos. A nova Conta NÃO foi criada.");
         }
     }
 
@@ -109,14 +111,7 @@ public class Conta {
         }
     }
 
-    public void mostrarExtrato(){
-        System.out.println("___________________________________");
-        System.out.println("JavaBank -> O seu Banco");
-        System.out.println("___________________________________");
-        System.out.println("Conta número \t" + numeroConta);
-        System.out.println("Agência \t\t" + agencia);
-        System.out.println("Titular \t\t" + titular);
-        System.out.println("Saldo \t\t\t" + saldo);
-        System.out.println("___________________________________");
-    }
+
+
+
 }

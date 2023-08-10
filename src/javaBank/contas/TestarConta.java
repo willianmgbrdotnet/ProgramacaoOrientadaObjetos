@@ -7,7 +7,7 @@ public class TestarConta {
 
 
 
-        Conta contaJoao = new Conta(123456, 123);
+        Conta contaJoao = new Conta(123456, 123, 0);
         contaJoao.setSaldo(-500);
         contaJoao.depositar(-300);
         contaJoao.depositar(1000);

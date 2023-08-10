@@ -26,6 +26,7 @@ public class Cliente {
             this.cpf = cpf;
         } else {
             System.out.println("Favor digitar um valor maior que 0 (zero). Número de CPF inválido");
+            System.out.println("Coloque um L maiusculo no final do numero do CPF.");
         }
     }
 
@@ -56,6 +57,15 @@ public class Cliente {
             System.out.println("Favor digitar um valor maior que 0 para o CPF. O novo Cliente não foi criado.");
         }
 
-
+    }
+    public void mostrarExtrato(){
+        System.out.println("___________________________________");
+        System.out.println("JavaBank -> O seu Banco");
+        System.out.println("___________________________________");
+        System.out.println("Conta número \t" + this.conta.getNumeroConta());
+        System.out.println("Agência \t\t" + this.conta.getAgencia());
+        System.out.println("Titular \t\t" + this.getNome());
+        System.out.println("Saldo \t\t\t" + this.conta.getSaldo());
+        System.out.println("___________________________________");
     }
 }

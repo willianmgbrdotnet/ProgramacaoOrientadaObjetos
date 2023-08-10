@@ -7,7 +7,7 @@ public class Conta {
     private double saldo;
     private int agencia;
     private int numeroConta;
-     Cliente titular;
+     private Cliente titular;
 
     //Os getters e setter permitirão acessar os atributos privados da Classe
     public double getSaldo() {
@@ -15,7 +15,7 @@ public class Conta {
     }
 
     public void setSaldo(double saldo) {
-        if ( saldo > 0) {
+        if ( saldo >= 0) {
             this.saldo = saldo;
         } else {
             System.out.println("Favor, digite um valor maior que 0 (zero). Valor de Saldo inválido!");
@@ -49,22 +49,23 @@ public class Conta {
 
     }
 
-    public Cliente getTitular() {
-        return titular;
-    }
-
-    public void setTitular(Cliente titular) {
-        this.titular = titular;
-    }
+//    public Cliente getTitular() {
+//        return titular;
+//    }
+//    public void setTitular(Cliente titular) {
+//        this.titular = titular;
+//    }
 
     //Método Construtor
-    public Conta(int numeroConta, int agencia){
-        if (numeroConta > 0 && agencia > 0) {
+    public Conta(int numeroConta, int agencia, double saldo){
+        if (numeroConta > 0 && agencia > 0 && saldo >= 0) {
             this.numeroConta = numeroConta;
             this.agencia = agencia;
+            this.saldo = saldo;
 
         } else {
             System.out.println("O número da Conta e Agência precisam ser positivos. A nova Conta NÃO foi criada.");
+            System.out.println("O saldo não pode ser negativo");
         }
     }
 
@@ -100,9 +101,11 @@ public class Conta {
             if (this.saldo >= valor) {
                 this.saldo -= valor;
                 destino.depositar(valor);
+                System.out.println("Tranferência realizada com SUCESSO");
+                System.out.println("Seu saldo depois da Transferência é: " + this.getSaldo());
                 return true;
             } else {
-                System.out.println("Você NÃO tem dinheiro suficiente para transferir este Valor. Transferência Negada.");
+                System.out.println("Você NÃO tem dinheiro suficiente. Transferência Negada.");
                 return false;
             }
         } else {
